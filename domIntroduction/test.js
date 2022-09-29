@@ -66,23 +66,58 @@ function extractText() {
     }
 }
 
-function sortNums() {
-    // let listItems = document.getElementById('number');
-    // let input = document.getElementById("first");
-    // let value = input.value;
-    // console.log(value)
-    // for (element in value) {
-    //     console.log(element)
-    // 
 
-    // let listItems = document.querySelectorAll('input')
-    let listItems = document.getElementsByTagName('ul li');
+function testSortNums(){
+    let elements = document.getElementsByTagName('input');
 
-    console.log(listItems)
+    let numList = [];
 
-    for (let item of listItems) {
-        let value = item.value;
-        console.log(value);
+    for (let element of elements) {
+        numList.push(Number(element.value));
+    }
+    
+    numList.sort((a,b) => a -b);
+    console.log(numList)
+    let textArea = document.getElementById('result');
+
+    for (let number of numList) {
+        textArea.value += number + '\n';
+    }
+
+
+}
+
+
+function reset() {
+    let textArea = document.getElementById('result');
+    textArea.value = ""
+
+}
+
+
+
+function showFullText() {
+    let initialText = document.getElementsByClassName('initial')[0]
+    let finalText = document.getElementsByClassName('full')[0];
+
+    finalText.style.display = 'inline';
+    initialText.style.display = 'none'
+
+}
+
+
+function colorizeRows() {
+    let rowList = document.querySelectorAll('table tr');
+    console.log(rowList)
+    // let tableLength = rowList.length;
+    // console.log(tableLength)
+    let counter = 0;
+    for (let row of rowList) {
+        counter ++;
+        if (counter % 2 == 0) {
+            row.style.background = 'teal';
+        }
     }
 
 }
+
